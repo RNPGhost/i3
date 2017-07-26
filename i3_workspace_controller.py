@@ -11,13 +11,10 @@ def create_default_workspaces():
     newWorkspaceName = get_default_workspace_name(i)
     subprocess.Popen(["i3-msg", "workspace " + newWorkspaceName])
 
-def focus_workspace(workspaceNumber):
+def move_to_workspace(workspaceNumber, moveContainer=False, focus=False):
   targetWorkspaceName = get_target_workspace_name(workspaceNumber)
-  subprocess.Popen(["i3-msg", "workspace " + targetWorkspaceName])
-
-def move_to_workspace(workspaceNumber, focus):
-  targetWorkspaceName = get_target_workspace_name(workspaceNumber)
-  subprocess.Popen(["i3-msg", "move to workspace " + targetWorkspaceName])
+  if moveContainer:
+    subprocess.Popen(["i3-msg", "move to workspace " + targetWorkspaceName])
   if focus:
     subprocess.Popen(["i3-msg", "workspace " + targetWorkspaceName])
 
@@ -60,14 +57,14 @@ if enough_arguments(2):
   elif command == 'focus':
     if enough_arguments(3):
       workspaceNumber = sys.argv[2]
-      focus_workspace(workspaceNumber)
+      move_to_workspace(workspaceNumber, focus=True)
   elif command == 'move':
     if enough_arguments(3):
       workspaceNumber = sys.argv[2]
-      move_to_workspace(workspaceNumber, False)
+      move_to_workspace(workspaceNumber, moveContainer=True)
   elif command == 'move_and_focus':
     if enough_arguments(3):
       workspaceNumber = sys.argv[2]
-      move_to_workspace(workspaceNumber, True)
+      move_to_workspace(workspaceNumber, moveContainer=True, focus=True)
   else:
     print("Error: Command '" + command + "' not recognised")
