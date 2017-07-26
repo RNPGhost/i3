@@ -3,7 +3,6 @@ import sys
 import subprocess
 import json
 
-MAX_WORKSPACES_PER_MONITOR = 10
 NAME_SEPERATOR = '-'
 
 def create_default_workspaces():
@@ -15,6 +14,12 @@ def create_default_workspaces():
 def focus_workspace(workspaceNumber):
   targetWorkspaceName = get_target_workspace_name(workspaceNumber)
   subprocess.Popen(["i3-msg", "workspace " + targetWorkspaceName])
+
+def move_to_workspace(workspaceNumber, focus):
+  targetWorkspaceName = get_target_workspace_name(workspaceNumber)
+  subprocess.Popen(["i3-msg", "move to workspace " + targetWorkspaceName])
+  if focus:
+    subprocess.Popen(["i3-msg", "workspace " + targetWorkspaceName])
 
 def get_workspaces():
   handle = subprocess.Popen(["i3-msg", "-t", "get_workspaces"], stdout=subprocess.PIPE)
@@ -41,16 +46,28 @@ def get_focused_workspace():
     if(i['focused']):
       return i['name']
 
-if len(sys.argv) < 2:
-  print("Error: Not enough arguments")
-else:
+def enough_arguments(requiredNumberOfArguments):
+  enoughArguments = (len(sys.argv) >= requiredNumberOfArguments)
+  if not enoughArguments:
+    print("Error: Not enough arguments provided")
+  return enoughArguments
+
+if enough_arguments(2):
   command = sys.argv[1]
-  if command == 'startup':
+  if command == 'start_up':
     if get_workspaces().__len__() > 1:
       create_default_workspaces()
   elif command == 'focus':
-    if len(sys.argv) > 2:
+    if enough_arguments(3):
       workspaceNumber = sys.argv[2]
       focus_workspace(workspaceNumber)
+  elif command == 'move':
+    if enough_arguments(3):
+      workspaceNumber = sys.argv[2]
+      move_to_workspace(workspaceNumber, False)
+  elif command == 'move_and_focus':
+    if enough_arguments(3):
+      workspaceNumber = sys.argv[2]
+      move_to_workspace(workspaceNumber, True)
   else:
     print("Error: Command '" + command + "' not recognised")
