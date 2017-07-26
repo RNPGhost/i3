@@ -8,10 +8,13 @@ NAME_SEPERATOR = '-'
 
 def create_default_workspaces():
   for i in range(get_workspaces().__len__(), 0, -1):
-    handle = subprocess.Popen(["i3-msg", "workspace " + str(i)])
+    subprocess.Popen(["i3-msg", "workspace " + str(i)])
     newWorkspaceName = get_default_workspace_name(i)
-    handle = subprocess.Popen(["i3-msg", "workspace " + newWorkspaceName])
-    print("Workspace " + str(i) + " renamed to workspace " + newWorkspaceName)
+    subprocess.Popen(["i3-msg", "workspace " + newWorkspaceName])
+
+def focus_workspace(workspaceNumber):
+  targetWorkspaceName = get_target_workspace_name(workspaceNumber)
+  subprocess.Popen(["i3-msg", "workspace " + targetWorkspaceName])
 
 def get_workspaces():
   handle = subprocess.Popen(["i3-msg", "-t", "get_workspaces"], stdout=subprocess.PIPE)
@@ -24,11 +27,7 @@ def get_workspaces():
   return arr
 
 def get_default_workspace_name(monitorNumber):
-  return (str(monitorNumber) + NAME_SEPERATOR + "1")
-
-def focus_workspace(workspaceNumber):
-  targetWorkspaceName = get_target_workspace_name(workspaceNumber)
-  handle = subprocess.Popen(["i3-msg", "workspace " + targetWorkspaceName])
+  return (chr(64 + monitorNumber) + NAME_SEPERATOR + "1")
 
 def get_target_workspace_name(workspaceNumber):
   return get_focused_workspace().split(NAME_SEPERATOR)[0] + NAME_SEPERATOR + str(workspaceNumber)
@@ -42,10 +41,7 @@ def get_focused_workspace():
     if(i['focused']):
       return i['name']
 
-def get_default_workspace_name(monitorNumber):
-  return (str(monitorNumber) + NAME_SEPERATOR + "1")
-
-if len(sys.argv) < 1:
+if len(sys.argv) < 2:
   print("Error: Not enough arguments")
 else:
   command = sys.argv[1]
@@ -53,7 +49,7 @@ else:
     if get_workspaces().__len__() > 1:
       create_default_workspaces()
   elif command == 'focus':
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 2:
       workspaceNumber = sys.argv[2]
       focus_workspace(workspaceNumber)
   else:
