@@ -36,7 +36,7 @@ set $bright_red #ee0000
 
 # class                 border      background  text        indicator   child_border 
 client.focused          $light_blue $light_blue $black      $light_blue $light_blue
-client.focused_inactive $purple     $purple     $white      $purple     $purple
+client.focused_inactive $dark_grey  $dark_grey  $white      $dark_grey  $dark_grey
 client.unfocused        $dark_grey  $dark_grey  $white      $dark_grey  $dark_grey
 
 # font

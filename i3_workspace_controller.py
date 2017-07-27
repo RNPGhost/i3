@@ -34,11 +34,21 @@ def get_workspaces():
   return arr
 
 def get_default_workspace_name(monitorNumber):
-  return ("1:" + chr(64 + monitorNumber) + NAME_SEPERATOR + "1")
+  return (get_sorting_prefix(1) + chr(64 + monitorNumber) + NAME_SEPERATOR + "1")
 
 def get_target_workspace_name(workspaceNumber):
-  print(workspaceNumber)
-  return str(workspaceNumber) + ":" + get_focused_workspace().split(':')[1].split(NAME_SEPERATOR)[0] + NAME_SEPERATOR + str(workspaceNumber)
+  sortingPrefix = get_sorting_prefix(workspaceNumber)
+  monitorPrefix = get_current_monitor_prefix()
+  return sortingPrefix + monitorPrefix + NAME_SEPERATOR + str(workspaceNumber)
+
+def get_sorting_prefix(workspaceNumber):
+  return str(workspaceNumber) + ':'
+
+def get_current_monitor_prefix():
+  return get_focused_workspace_name().split(':')[1].split(NAME_SEPERATOR)[0]
+
+def get_focused_workspace_name():
+  return get_focused_workspace()['name']
 
 def get_focused_workspace():
   handle = subprocess.Popen(["i3-msg","-t","get_workspaces"], stdout=subprocess.PIPE)
@@ -47,13 +57,12 @@ def get_focused_workspace():
   data = sorted(data, key=lambda k: k['name'])
   for i in data:
     if(i['focused']):
-      return i['name']
+      return i
 
 def get_current_workspace_number():
-  return get_workspace_number(get_focused_workspace())
+  return get_workspace_number(get_focused_workspace_name())
 
 def get_workspace_number(workspaceName):
-  print("current workspace number is " + workspaceName.split(NAME_SEPERATOR)[1])
   return int(workspaceName.split(NAME_SEPERATOR)[1])
 
 def enough_arguments(requiredNumberOfArguments):
