@@ -24,6 +24,9 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# set workspace controller is local python script
+set $controller ~/.config/i3/i3_workspace_controller.py
+
 # set windows key as mod
 set $mod Mod4
 
@@ -53,13 +56,12 @@ bindsym $mod+p exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
+# change focused window
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -71,7 +73,6 @@ bindsym $mod+$alt+$down move down
 bindsym $mod+$alt+$up move up
 bindsym $mod+$alt+$right move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+$alt+Left move left
 bindsym $mod+$alt+Down move down
 bindsym $mod+$alt+Up move up
@@ -83,13 +84,13 @@ bindsym $mod+c split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+t split v; layout tabbed
 bindsym $mod+e layout toggle split
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -104,52 +105,75 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move_and_focus scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 exec $controller focus 1
+bindsym $mod+2 exec $controller focus 2
+bindsym $mod+3 exec $controller focus 3
+bindsym $mod+4 exec $controller focus 4
+bindsym $mod+5 exec $controller focus 5
+bindsym $mod+6 exec $controller focus 6
+bindsym $mod+7 exec $controller focus 7
+bindsym $mod+8 exec $controller focus 8
+bindsym $mod+9 exec $controller focus 9
+bindsym $mod+0 exec $controller focus 10
 
-# alternative switch to workspace
-bindsym $mod+n workspace 1
-bindsym $mod+m workspace 2
-bindsym $mod+comma workspace 3
+bindsym $mod+n exec $controller focus prev
+bindsym $mod+slash exec $controller focus next
+
+bindsym $mod+m exec $controller focus 1
+bindsym $mod+comma exec $controller focus 2
+bindsym $mod+period exec $controller focus 3
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 exec $controller move 1
+bindsym $mod+Shift+2 exec $controller move 2
+bindsym $mod+Shift+3 exec $controller move 3
+bindsym $mod+Shift+4 exec $controller move 4
+bindsym $mod+Shift+5 exec $controller move 5
+bindsym $mod+Shift+6 exec $controller move 6
+bindsym $mod+Shift+7 exec $controller move 7
+bindsym $mod+Shift+8 exec $controller move 8
+bindsym $mod+Shift+9 exec $controller move 9
+bindsym $mod+Shift+0 exec $controller move 10
 
-# alternative move focused container to workspace
-bindsym $mod+Shift+n move container to workspace 1
-bindsym $mod+Shift+m move container to workspace 2
-bindsym $mod+Shift+comma move container to workspace 3
+bindsym $mod+Shift+n exec $controller move prev
+bindsym $mod+Shift+slash exec $controller move next
+
+bindsym $mod+Shift+m exec $controller move 1
+bindsym $mod+Shift+comma exec $controller move 2
+bindsym $mod+Shift+period exec $controller move 3
+
+# move focused container to workspace and focus
+bindsym $mod+$alt+1 exec $controller move_and_focus 1
+bindsym $mod+$alt+2 exec $controller move_and_focus 2
+bindsym $mod+$alt+3 exec $controller move_and_focus 3
+bindsym $mod+$alt+4 exec $controller move_and_focus 4
+bindsym $mod+$alt+5 exec $controller move_and_focus 5
+bindsym $mod+$alt+6 exec $controller move_and_focus 6
+bindsym $mod+$alt+7 exec $controller move_and_focus 7
+bindsym $mod+$alt+8 exec $controller move_and_focus 8
+bindsym $mod+$alt+9 exec $controller move_and_focus 9
+bindsym $mod+$alt+0 exec $controller move_and_focus 10
+
+bindsym $mod+$alt+n exec $controller move_and_focus prev
+bindsym $mod+$alt+slash exec $controller move_and_focus next
+
+bindsym $mod+$alt+m exec $controller move_and_focus 1
+bindsym $mod+$alt+comma exec $controller move_and_focus 2
+bindsym $mod+$alt+period exec $controller move_and_focus 3
 
 # switch monitor
-bindsym $mod+period focus output right
+bindsym $mod+semicolon focus output right
 # move to other monitor
-bindsym $mod+Shift+period move container to output right
+bindsym $mod+Shift+semicolon move container to output right
 # move to and focus other monitor
-bindsym $mod+$alt+period move container to output right; focus output right
+bindsym $mod+$alt+semicolon move container to output right; focus output right
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -191,6 +215,9 @@ bar {
         position top
         strip_workspace_numbers yes
 }
+
+# Always initialise workspace controller
+exec_always $controller start_up
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
