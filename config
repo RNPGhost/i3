@@ -40,7 +40,7 @@ client.focused_inactive $purple     $purple     $white      $purple     $purple
 client.unfocused        $dark_grey  $dark_grey  $white      $dark_grey  $dark_grey
 
 # font
-font pango:Terminus 11
+font pango:Terminus 16px
 
 # set workspace controller is local python script
 set $controller ~/.config/i3/i3_workspace_controller.py
