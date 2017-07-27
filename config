@@ -24,6 +24,24 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# colours
+set $black      #000000
+set $white      #ffffff
+set $dark_grey  #424242
+set $grey       #666666
+set $light_grey #aaaaaa
+set $light_blue #44bbff
+set $purple     #361599
+set $bright_red #ee0000
+
+# class                 border      background  text        indicator   child_border 
+client.focused          $light_blue $light_blue $black      $light_blue $light_blue
+client.focused_inactive $purple     $purple     $white      $purple     $purple
+client.unfocused        $dark_grey  $dark_grey  $white      $dark_grey  $dark_grey
+
+# font
+font pango:Terminus 11
+
 # set workspace controller is local python script
 set $controller ~/.config/i3/i3_workspace_controller.py
 
@@ -180,7 +198,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exit
+bindsym $mod+Shift+q exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
