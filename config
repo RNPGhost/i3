@@ -57,6 +57,9 @@ set $down j
 set $left h
 set $right l
 
+# set resize velocity
+set $resize_velocity 3
+
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -219,16 +222,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+        bindsym $left       resize shrink width $resize_velocity px or $resize_velocity ppt
+        bindsym $down       resize grow height $resize_velocity px or $resize_velocity ppt
+        bindsym $up         resize shrink height $resize_velocity px or $resize_velocity ppt
+        bindsym $right      resize grow width $resize_velocity px or $resize_velocity ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+        bindsym Left        resize shrink width $resize_velocity px or $resize_velocity ppt
+        bindsym Down        resize grow height $resize_velocity px or $resize_velocity ppt
+        bindsym Up          resize shrink height $resize_velocity px or $resize_velocity ppt
+        bindsym Right       resize grow width $resize_velocity px or $resize_velocity ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
