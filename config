@@ -201,7 +201,7 @@ bindsym $mod+Shift+r restart
 # for shutting down or quitting i3
 mode "exit" {
         bindsym p exec shutdown now
-        bindsym r restart
+        bindsym r exec reboot
         bindsym q exit
 
         # return to normal
