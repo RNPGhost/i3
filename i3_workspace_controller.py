@@ -6,7 +6,7 @@ import json
 NAME_SEPERATOR = '-'
 
 def create_default_workspaces():
-  for i in range(get_workspaces().__len__(), 0, -1):
+  for i in range(len(get_workspaces()), 0, -1):
     subprocess.Popen(["i3-msg", "rename workspace " + str(i) + " to " + get_default_workspace_name(i)])
 
 def move_to_workspace(targetWorkspace, moveContainer=False, focus=False):
@@ -74,7 +74,7 @@ def enough_arguments(requiredNumberOfArguments):
 if enough_arguments(2):
   command = sys.argv[1]
   if command == 'start_up':
-    if get_workspaces().__len__() > 1:
+    if len(get_workspaces()) > 1:
       create_default_workspaces()
   elif command == 'focus':
     if enough_arguments(3):
