@@ -9,9 +9,11 @@
 # layout, use the i3-config-wizard
 #
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
+# Window bar font
+font pango:Terminus 12
+
+# Set dmenu font
+set $dmenufont "Terminus:size=15"
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -39,9 +41,6 @@ client.focused          $light_blue $light_blue $black      $light_blue $light_b
 client.focused_inactive $dark_grey  $dark_grey  $white      $dark_grey  $dark_grey
 client.unfocused        $dark_grey  $dark_grey  $white      $dark_grey  $dark_grey
 
-# font
-font pango:Terminus 16px
-
 # set workspace controller is local python script
 set $controller ~/.config/i3/i3_workspace_controller.py
 
@@ -67,8 +66,8 @@ bindsym $mod+Return exec terminator
 # kill focused window
 bindsym $mod+Shift+d kill
 
-# start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
+# start dmenu (a program launcher)               #background  #text        #selectedbkgr.    #selectedtext
+bindsym $mod+p exec dmenu_run -fn $dmenufont -nb "$black" -nf "$white" -sb "$light_blue" -sf "$black"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
