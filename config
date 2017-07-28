@@ -244,6 +244,14 @@ bar {
         status_command i3status
         position top
         strip_workspace_numbers yes
+
+        # i3bar colors
+        colors {
+            focused_workspace  $light_blue $dark_grey  $light_blue
+	    active_workspace   $bright_red $dark_grey  $white
+	    inactive_workspace $dark_grey  $dark_grey  $white
+	    urgent_workspace   $bright_red $dark_grey  $white
+        }
 }
 
 # Always initialise workspace controller
