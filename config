@@ -47,6 +47,9 @@ set $controller ~/.config/i3/i3_workspace_controller.py
 # set windows key as mod
 set $mod Mod4
 
+# set alt key at alt
+set $alt Mod1
+
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
@@ -61,7 +64,7 @@ set $resize_velocity 3
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+d kill
