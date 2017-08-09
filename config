@@ -42,7 +42,7 @@ client.focused_inactive $dark_grey  $dark_grey  $white      $dark_grey  $dark_gr
 client.unfocused        $dark_grey  $dark_grey  $white      $dark_grey  $dark_grey
 
 # set workspace controller is local python script
-set $controller ~/.config/i3/i3_workspace_controller.py
+set $workspace_controller ~/.config/i3/i3_workspace_controller.py
 
 # set windows key as mod
 set $mod Mod4
@@ -132,61 +132,67 @@ bindsym $mod+Shift+minus move_and_focus scratchpad
 bindsym $mod+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+1 exec $controller focus 1
-bindsym $mod+2 exec $controller focus 2
-bindsym $mod+3 exec $controller focus 3
-bindsym $mod+4 exec $controller focus 4
-bindsym $mod+5 exec $controller focus 5
-bindsym $mod+6 exec $controller focus 6
-bindsym $mod+7 exec $controller focus 7
-bindsym $mod+8 exec $controller focus 8
-bindsym $mod+9 exec $controller focus 9
-bindsym $mod+0 exec $controller focus 10
+bindsym $mod+1 exec $workspace_controller focus 1
+bindsym $mod+2 exec $workspace_controller focus 2
+bindsym $mod+3 exec $workspace_controller focus 3
+bindsym $mod+4 exec $workspace_controller focus 4
+bindsym $mod+5 exec $workspace_controller focus 5
+bindsym $mod+6 exec $workspace_controller focus 6
+bindsym $mod+7 exec $workspace_controller focus 7
+bindsym $mod+8 exec $workspace_controller focus 8
+bindsym $mod+9 exec $workspace_controller focus 9
+bindsym $mod+0 exec $workspace_controller focus 10
 
-bindsym $mod+n exec $controller focus prev
-bindsym $mod+slash exec $controller focus next
+bindsym $mod+n exec $workspace_controller focus prev
+bindsym $mod+slash exec $workspace_controller focus next
 
-bindsym $mod+m exec $controller focus 1
-bindsym $mod+comma exec $controller focus 2
-bindsym $mod+period exec $controller focus 3
+bindsym $mod+m exec $workspace_controller focus 1
+bindsym $mod+comma exec $workspace_controller focus 2
+bindsym $mod+period exec $workspace_controller focus 3
 
 # move focused container to workspace
-bindsym $mod+Shift+1 exec $controller move 1
-bindsym $mod+Shift+2 exec $controller move 2
-bindsym $mod+Shift+3 exec $controller move 3
-bindsym $mod+Shift+4 exec $controller move 4
-bindsym $mod+Shift+5 exec $controller move 5
-bindsym $mod+Shift+6 exec $controller move 6
-bindsym $mod+Shift+7 exec $controller move 7
-bindsym $mod+Shift+8 exec $controller move 8
-bindsym $mod+Shift+9 exec $controller move 9
-bindsym $mod+Shift+0 exec $controller move 10
+bindsym $mod+Shift+1 exec $workspace_controller move 1
+bindsym $mod+Shift+2 exec $workspace_controller move 2
+bindsym $mod+Shift+3 exec $workspace_controller move 3
+bindsym $mod+Shift+4 exec $workspace_controller move 4
+bindsym $mod+Shift+5 exec $workspace_controller move 5
+bindsym $mod+Shift+6 exec $workspace_controller move 6
+bindsym $mod+Shift+7 exec $workspace_controller move 7
+bindsym $mod+Shift+8 exec $workspace_controller move 8
+bindsym $mod+Shift+9 exec $workspace_controller move 9
+bindsym $mod+Shift+0 exec $workspace_controller move 10
 
-bindsym $mod+Shift+n exec $controller move prev
-bindsym $mod+Shift+slash exec $controller move next
+bindsym $mod+Shift+n exec $workspace_controller move prev
+bindsym $mod+Shift+slash exec $workspace_controller move next
 
-bindsym $mod+Shift+m exec $controller move 1
-bindsym $mod+Shift+comma exec $controller move 2
-bindsym $mod+Shift+period exec $controller move 3
+bindsym $mod+Shift+m exec $workspace_controller move 1
+bindsym $mod+Shift+comma exec $workspace_controller move 2
+bindsym $mod+Shift+period exec $workspace_controller move 3
 
 # move focused container to workspace and focus
-bindsym $mod+$alt+1 exec $controller move_and_focus 1
-bindsym $mod+$alt+2 exec $controller move_and_focus 2
-bindsym $mod+$alt+3 exec $controller move_and_focus 3
-bindsym $mod+$alt+4 exec $controller move_and_focus 4
-bindsym $mod+$alt+5 exec $controller move_and_focus 5
-bindsym $mod+$alt+6 exec $controller move_and_focus 6
-bindsym $mod+$alt+7 exec $controller move_and_focus 7
-bindsym $mod+$alt+8 exec $controller move_and_focus 8
-bindsym $mod+$alt+9 exec $controller move_and_focus 9
-bindsym $mod+$alt+0 exec $controller move_and_focus 10
+bindsym $mod+$alt+1 exec $workspace_controller move_and_focus 1
+bindsym $mod+$alt+2 exec $workspace_controller move_and_focus 2
+bindsym $mod+$alt+3 exec $workspace_controller move_and_focus 3
+bindsym $mod+$alt+4 exec $workspace_controller move_and_focus 4
+bindsym $mod+$alt+5 exec $workspace_controller move_and_focus 5
+bindsym $mod+$alt+6 exec $workspace_controller move_and_focus 6
+bindsym $mod+$alt+7 exec $workspace_controller move_and_focus 7
+bindsym $mod+$alt+8 exec $workspace_controller move_and_focus 8
+bindsym $mod+$alt+9 exec $workspace_controller move_and_focus 9
+bindsym $mod+$alt+0 exec $workspace_controller move_and_focus 10
 
-bindsym $mod+$alt+n exec $controller move_and_focus prev
-bindsym $mod+$alt+slash exec $controller move_and_focus next
+bindsym $mod+$alt+n exec $workspace_controller move_and_focus prev
+bindsym $mod+$alt+slash exec $workspace_controller move_and_focus next
 
-bindsym $mod+$alt+m exec $controller move_and_focus 1
-bindsym $mod+$alt+comma exec $controller move_and_focus 2
-bindsym $mod+$alt+period exec $controller move_and_focus 3
+bindsym $mod+$alt+m exec $workspace_controller move_and_focus 1
+bindsym $mod+$alt+comma exec $workspace_controller move_and_focus 2
+bindsym $mod+$alt+period exec $workspace_controller move_and_focus 3
+
+# output sink controls
+set $output_sink_controller ~/.config/i3/output_sink_controller.py
+
+bindsym $mod+F1 exec $output_sink_controller set Headphones
+bindsym $mod+F2 exec $output_sink_controller set Speakers 
 
 # volume controls
 set $volume_change 5
@@ -264,4 +270,4 @@ bar {
 }
 
 # Always initialise workspace controller
-exec_always $controller start_up
+exec_always $workspace_controller start_up
