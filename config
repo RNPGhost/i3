@@ -191,8 +191,8 @@ bindsym $mod+$alt+period exec $controller move_and_focus 3
 # volume controls
 set $volume_change 5
 
-bindsym $mod+F3 exec amixer -q sset Master $volume_change%-; exec killall -USR1 i3status
-bindsym $mod+F4 exec amixer -q sset Master $volume_change%+; exec killall -USR1 i3status
+bindsym $mod+F3 exec amixer -q sset Master $volume_change%-; exec pkill -RTMIN+1 i3blocks
+bindsym $mod+F4 exec amixer -q sset Master $volume_change%+; exec pkill -RTMIN+1 i3blocks
 
 # switch monitor
 bindsym $mod+semicolon focus output right
