@@ -6,6 +6,7 @@ import json
 NAME_SEPERATOR = '-'
 
 def create_default_workspaces():
+  subprocess.Popen(["i3-msg", "workspace", "1"])
   for i in range(len(get_workspaces()), 0, -1):
     subprocess.Popen(["i3-msg", "rename workspace " + str(i) + " to " + get_default_workspace_name(i)])
   subprocess.Popen(["i3-msg", "workspace " + get_default_workspace_name(1)])
