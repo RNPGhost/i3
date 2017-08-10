@@ -31,10 +31,10 @@ def enough_arguments(requiredNumberOfArguments):
 if len(sys.argv) >= 2:
     command = sys.argv[1]
     if command == 'get':
-        sys.stdout.write(get_output_sink_name())
+        print(get_output_sink_name())
     elif command == 'set':
         if enough_arguments(3):
             output_name = sys.argv[2]
-            sys.stdout.write(set_output_sink(output_name))
+            print(set_output_sink(output_name))
     else:
         print("Error: Command " + command + " not recognised")
