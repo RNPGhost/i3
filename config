@@ -191,8 +191,8 @@ bindsym $mod+$alt+period exec $workspace_controller move_and_focus 3
 # output sink controls
 set $output_sink_controller ~/.config/i3/output_sink_controller.py
 
-bindsym $mod+F1 exec $output_sink_controller set Headphones
-bindsym $mod+F2 exec $output_sink_controller set Speakers 
+#bindsym $mod+F1 exec $output_sink_controller set Headphones
+#bindsym $mod+F2 exec $output_sink_controller set Speakers 
 
 # volume controls
 set $volume_change 5
