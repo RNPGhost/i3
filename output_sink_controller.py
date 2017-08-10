@@ -22,8 +22,8 @@ def set_output_sink(output_name):
         print("Error: The output sink name '" + output_name + "' was not found")
         return False
 
-def enough_arguments(requiredNumberOfArguments):
-  enoughArguments = (len(sys.argv) >= requiredNumberOfArguments)
+def enough_arguments(required_number_of_arguments):
+  enoughArguments = (len(sys.argv) >= required_number_of_arguments)
   if not enoughArguments:
     print("Error: Not enough arguments provided")
   return enoughArguments
