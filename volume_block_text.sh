@@ -13,9 +13,12 @@ fi
 
 VOLUME="$(/usr/local/libexec/i3blocks/volume)"
 if [[ "$VOLUME" == MUTE ]]; then
-    VOLUME="<span color='red'>Muted</span>"
-elif [[ "$VOLUME" == 0% ]]; then
-    VOLUME="<span color='red'>$VOLUME</span>"
+    VOLUME="Muted"
 fi
 
-echo "$LABEL: $VOLUME"
+FULL_TEXT="$LABEL: $VOLUME"
+if [[ "$VOLUME" == 0% ]] || [[ "$VOLUME" == Muted ]]; then
+    FULL_TEXT="<span color='red'>$FULL_TEXT</span>"
+fi
+
+echo "$FULL_TEXT"
