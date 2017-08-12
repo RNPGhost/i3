@@ -199,6 +199,9 @@ set $volume_change 5
 
 bindsym $mod+F3 exec amixer -q sset Master $volume_change%-; exec pkill -RTMIN+1 i3blocks
 bindsym $mod+F4 exec amixer -q sset Master $volume_change%+; exec pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q sset Master $volume_change%-; exec pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master $volume_change%+; exec pkill -RTMIN+1 i3blocks
+
 
 # switch monitor
 bindsym $mod+semicolon focus output right
