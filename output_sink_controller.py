@@ -4,12 +4,10 @@ import subprocess
 import re
 
 readable_name_to_sink_name = {
-        'work_speakers':'alsa_output.pci-0000_00_1b.0.iec958-stereo',
         'home_headphones':'alsa_output.usb-Corsair_Vengeance_2100-00.analog-stereo',
         'home_speakers':'alsa_output.pci-0000_00_1b.0.analog-stereo'
     }
 sink_name_to_readable_name = {
-        'alsa_output.pci-0000_00_1b.0.iec958-stereo':'Speakers',
         'alsa_output.usb-Corsair_Vengeance_2100-00.analog-stereo':'Headphones',
         'alsa_output.pci-0000_00_1b.0.analog-stereo':'Speakers'
     }
