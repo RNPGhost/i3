@@ -267,7 +267,7 @@ bar {
                                #border     #background #text
             focused_workspace  $light_blue $black      $light_blue
 	    active_workspace   $white      $black      $white
-	    inactive_workspace $dark_grey  $black      $white
+	    inactive_workspace $black      $black      $white
 	    urgent_workspace   $bright_red $black      $white
         }
 }
