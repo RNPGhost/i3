@@ -191,17 +191,16 @@ bindsym $mod+$alt+period exec $workspace_controller move_and_focus 3
 # output sink controls
 set $output_sink_controller ~/.config/i3/output_sink_controller.py
 
-bindsym $mod+F1 exec $output_sink_controller set home_headphones; exec pkill -RTMIN+1 i3blocks
-bindsym $mod+F2 exec $output_sink_controller set home_speakers; exec pkill -RTMIN+1 i3blocks
+bindsym $alt+F1 exec $output_sink_controller set home_headphones; exec pkill -RTMIN+1 i3blocks
+bindsym $alt+F2 exec $output_sink_controller set home_speakers; exec pkill -RTMIN+1 i3blocks
 
 # volume controls
 set $volume_change 5
 
-bindsym $mod+F3 exec amixer -q sset Master $volume_change%-; exec pkill -RTMIN+1 i3blocks
-bindsym $mod+F4 exec amixer -q sset Master $volume_change%+; exec pkill -RTMIN+1 i3blocks
+bindsym $alt+F3 exec amixer -q sset Master $volume_change%-; exec pkill -RTMIN+1 i3blocks
+bindsym $alt+F4 exec amixer -q sset Master $volume_change%+; exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec amixer -q sset Master $volume_change%-; exec pkill -RTMIN+1 i3blocks
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master $volume_change%+; exec pkill -RTMIN+1 i3blocks
-
 
 # switch monitor
 bindsym $mod+semicolon focus output right
