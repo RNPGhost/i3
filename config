@@ -210,12 +210,17 @@ bindsym $mod+Shift+semicolon move container to output right
 bindsym $mod+$alt+semicolon move container to output right; focus output right
 
 # take screenshot
-bindsym Print exec shutter -a
+bindsym Print exec shutter -a -e -n --min_at_startup --disable_systray
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
+# for locking i3
+set $lock_screen "i3lock --image=/home/local/sfh/pictures/screensavers/irithyll5.png -c 000000 -t"
+bindsym $mod+Shift+l exec $lock_screen
+exec xautolock -time 10 -locker $lock_screen &
 
 # for shutting down or quitting i3
 mode "exit" {
