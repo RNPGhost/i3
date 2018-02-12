@@ -218,9 +218,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # for locking i3
-set $lock_screen "i3lock --image=/home/local/sfh/pictures/screensavers/irithyll5.png -c 000000 -t"
+set $lock_screen "i3lock --image=/home/local/sfh/pictures/screensavers/irithyll5.png -c 000000 -t -e"
 bindsym $mod+Shift+l exec $lock_screen
-exec xautolock -time 10 -locker $lock_screen &
+exec xautolock -locker $lock_screen &
 
 # for shutting down or quitting i3
 mode "exit" {
