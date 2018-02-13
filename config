@@ -222,6 +222,9 @@ set $lock_screen "i3lock --image=/home/local/sfh/pictures/screensavers/irithyll5
 bindsym $mod+Shift+l exec $lock_screen
 exec xautolock -locker $lock_screen &
 
+# set background on startup
+exec sh ~/.fehbg
+
 # shut down or quit i3
 mode "exit" {
         bindsym p exec shutdown now
