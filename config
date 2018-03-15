@@ -218,12 +218,14 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # lock i3
-set $lock_screen "i3lock --image=/home/local/sfh/pictures/screensavers/irithyll5.png -c 000000 -t -e"
-bindsym $mod+Shift+l exec $lock_screen
-exec xautolock -locker $lock_screen
+set $screen_locker ~/.config/i3/lock_screen.sh
+bindsym $mod+Shift+l exec $screen_locker
+exec -time 1 xautolock -locker $screen_locker
 
-# set background on startup
-exec sh ~/.fehbg
+# set background
+set $background_changer ~/.config/i3/randomise_desktop_background.sh
+bindsym $mod+Shift+b exec $background_changer
+exec $background_changer
 
 # shut down or quit i3
 mode "exit" {
